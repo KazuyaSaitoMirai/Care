@@ -21,10 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
- production:
    adapter: postgresql
    encoding: utf8
    database: DATABASE
    port: 5432
-   username: USERNAME
-   password: PASSWORD
+   username: vgpqgmmjtipaut
+   password: 4627007cd0d3a000246af376fb663e2dc3ab3f911bd7a5c59dc75cbf29d21056
