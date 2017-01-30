@@ -97,13 +97,13 @@
 <!-- メインコンテント -->
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <h3 class="row-space-3">このリスティングについて</h3>
                 <p><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %>
                 </p>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             
         </div>
     </div>  
@@ -111,62 +111,99 @@
 
     <!-- レビュー    -->
     <div class="row">
-        <div class="col-md-8">
-            <h3 class="row-space-3">このリスティングについて</h3>
-            <p><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %><%= @listing.listing_content %></p>
+        <div class="col-md-9">
+            <h3 class="row-space-3">レビュー</h3>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
         
         </div>
     </div>
 
-        <!-- google map    -->
+    <!-- google map    -->
     <div class="row">
-        <div class="col-md-8">
-       <div id="map"></div>
+        <div class="col-md-9">
+            <h3 class="row-space-3">アクセス</h3>
+            <div id="map"></div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
         
         </div>
     </div>
     <style>
-      #map {
-        width: 100%;
-        height: 350px;
-      }
+        #map{
+            width: 100%;
+            height: 350px;
+        }
+        
     </style>
+
+    <!-- 近くのリスティング    -->
+    <div class="row">
+        <div class="col-md-9">
+            <h3 class="row-space-3">近くのリスティング</h3>
+            
+            <% for listing in @listing.nearbys(10) %>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-listing text-center" style="padding: 0;">
+                            <%= link_to(listing) do %>
+                                <%= image_tag listing.photos[0].image.url(:medium)  if listing.photos.length > 0 %>
+                            <% end %>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8 col-xs-8">
+                                    <%= link_to listing.listing_title, listing %><br>
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <%= image_tag listing.user.image,class:"img-circle profile-1" %>
+                                </div>
+                                <div class="price-card">
+                                    <%= listing.price_pernight %> 円     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+
+        </div>
+
+        <div class="col-md-3">
+        
+        </div>
+    </div>
 
 </div>
 
-   <script>
-
-
-
+<script>
 function initMap() {
+  
   // Create the map.
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
-    center: {lat: <%= @listing.latitude %>, lng:<%= @listing.longitude %>},
+    center: {lat: <%=@listing.latitude %>, lng: <%=@listing.longitude %>},
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
 
-  // Construct the circle for each value in citymap.
-  // Note: We scale the area of the circle based on the population.
-    // Add the circle for this city to the map.
-    var cityCircle = new google.maps.Circle({
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#FF0000',
-      fillOpacity: 0.35,
-      map: map,
-      center: {lat: <%= @listing.latitude %>, lng:<%= @listing.longitude %>},
-      radius: 500
-    });
+
+  // Add the circle for this city to the map.
+  var cityCircle = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    map: map,
+    center: {lat: <%=@listing.latitude %>, lng: <%=@listing.longitude %>},
+    radius: 500
+  });
+  
 }
 
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAJSPjP7M6mBZA7NUb9C0KCivq902WRXws&callback=initMap"></script>
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1BoiSo2jL950_AuFzV-f9ETgKn0uQl2I&signed_in=true&callback=initMap"></script>

@@ -18,6 +18,18 @@
             </div>
 
             <div class="form-group">
+              <%= f.text_field :office_name, autofocus: true, :placeholder => "事業所名", :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :office_address, autofocus: true, :placeholder => "事業所住所", :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :occupation, autofocus: true, :placeholder => "職種", :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
               <%= f.email_field :email, :placeholder => "Email", :class => 'form-control' %>
             </div>
 

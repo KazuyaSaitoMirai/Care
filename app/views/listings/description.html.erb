@@ -16,7 +16,45 @@
 
                 <%= form_for @listing do |f| %>
 
-                    <div class="row">
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>利用者の生活に対する意向</label>
+                  <%= f.select :personal_needs, [["できるだけ自立して暮らしたい","自立"], ["介護","マンション"], ["活動","アパート"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>家族の生活に対する意向</label>
+                  <%= f.select :family_needs, [["できるだけ自立して暮らしたい","自立"], ["介護","マンション"], ["活動","アパート"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>介護認定審査会の意見及びサービス種類の指定</label>
+                  <%= f.select :service_category, [["一軒家","一軒家"], ["マンション","マンション"], ["アパート","アパート"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>総合的な援助の方針</label>
+                  <%= f.select :comprehensive_aid_policy, [["一軒家","一軒家"], ["マンション","マンション"], ["アパート","アパート"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+
+<!--                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>タイトル</label>
@@ -32,7 +70,7 @@
                                 <%= f.text_area :listing_content, rows: 8, placeholder: "リスティングの内容について記述してください", class: "form-control" %>
                             </div>                            
                         </div>
-                    </div>
+                    </div> -->
             
 
                     <div class="actions">

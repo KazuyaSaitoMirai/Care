@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126002901) do
+ActiveRecord::Schema.define(version: 20170130080512) do
 
   create_table "listings", force: :cascade do |t|
-    t.string   "home_type",       limit: 255
-    t.string   "pet_type",        limit: 255
-    t.string   "pet_size",        limit: 255
+    t.string   "home_type",                   limit: 255
+    t.string   "pet_type",                    limit: 255
+    t.string   "pet_size",                    limit: 255
     t.integer  "breeding_years"
-    t.string   "address",         limit: 255
-    t.string   "listing_title",   limit: 255
+    t.string   "address",                     limit: 255
+    t.string   "listing_title",               limit: 255
     t.text     "listing_content"
     t.integer  "price_pernight"
     t.boolean  "active"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170126002901) do
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "name"
+    t.string   "sex"
+    t.date     "birth_date"
+    t.integer  "age"
+    t.date     "initial_hm_plan_date"
+    t.date     "hm_plan_date"
+    t.date     "certification_date"
+    t.date     "period_of_the_certification"
+    t.string   "personal_needs"
+    t.string   "family_needs"
+    t.string   "service_category"
+    t.string   "comprehensive_aid_policy"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id"
@@ -63,6 +75,9 @@ ActiveRecord::Schema.define(version: 20170126002901) do
     t.string   "name",                   limit: 255
     t.string   "phone_number",           limit: 255
     t.string   "description",            limit: 255
+    t.string   "office_name"
+    t.text     "office_address"
+    t.string   "occupation"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
